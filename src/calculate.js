@@ -3,8 +3,7 @@
  */
 module.exports = function(exp) {
     var result,
-        //reg = /[^\d()*\/+-\s]/;
-        reg = /[^\d()*/+-\s]/;
+        reg = /[^\d()*/+-\.\s]/;
     if (reg.test(exp)) return 'illegal exprssion';
     try {
         result = eval(exp);
