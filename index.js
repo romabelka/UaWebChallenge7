@@ -1,9 +1,8 @@
 var Gitter = require('node-gitter'),
     calculate = require('./src/calculate'),
     token = '43e4c18aea4d7a7e7c36e780e868e4fe6585f643',
-    roomName = 'romabelka/UaWebChallenge7',
+    roomName = process.argv[2],
     gitter = new Gitter(token);
-
 gitter.currentUser()
     .then(function(user) {
         console.log('You are logged in as:', user.username);
