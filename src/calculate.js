@@ -4,11 +4,6 @@
 module.exports = function(exp) {
     var result,
         reg = /[^\d()*/+-\.\s]/;
-    if (reg.test(exp)) return 'illegal exprssion';
-    try {
-        result = eval(exp);
-    } catch (err) {
-        result = "sorry, there is an error in expression"
-    }
-    return result
+    if (reg.test(exp)) throw new Error('illegal exprssion');
+    return eval(exp);
 };

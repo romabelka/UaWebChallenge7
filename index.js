@@ -15,8 +15,14 @@ gitter.rooms.join(roomName)
 
         events.on('message', function(message) {
             if (message.text.indexOf('calc') !== 0) return;
-            var expression = message.text.slice(5);
-            room.send(expression + ' = ' + calculate(expression));
+            var text,
+                expression = message.text.slice(4);
+            try {
+                text = expression + ' = ' + calculate(expression)
+            } catch (err) {
+                text = "Unable to calculate ' " + expression + " ': " + err.message
+            }
+            room.send(text);
         });
     })
     .fail(function(err) {
